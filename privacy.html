@@ -19,17 +19,16 @@ By using it you also agree to the <a href="https://www.youtube.com/t/terms">YouT
 
 <h2>What it accesses</h2>
 <ul>
-  <li>Public comments and replies on the owner's own YouTube channels, and the titles and descriptions of those channels' videos.</li>
+  <li>Public comments and replies on the owner's own YouTube channels, and the titles, descriptions and public view counts of those channels' videos.</li>
   <li>When the owner connects a channel with Google sign-in, permission to post comment replies as that channel (scope <code>youtube.force-ssl</code>).</li>
-  <li>The basic profile of the signed-in Google account (channel name and ID), used only to show which channel is connected.
-    <span class="todo">[TO CONFIRM: delete this item if the app does not read the account's profile or channel list.]</span></li>
+  <li>The ID and name of the YouTube channel chosen at sign-in. It is read once, when the channel is connected, and used only to show which channel is connected. The app does not read the Google account's email address or profile.</li>
 </ul>
 
 <h2>How it is used</h2>
 <ul>
-  <li>To show the owner new comments, translate them, and draft and post replies on the owner's own channels.</li>
-  <li>To draft replies, the text of a comment and the video's title and description are sent to Anthropic's Claude API. Anthropic's handling of that data is described in the <a href="https://www.anthropic.com/legal/privacy">Anthropic Privacy Policy</a>.
-    <span class="todo">[TO CONFIRM: if translation uses a different service (for example a translation API), name it here too.]</span></li>
+  <li>To show the owner new comments, translate them, and draft and post replies on the owner's own channels. Unless the owner turns this off in the app, it also posts a short reply by itself to simple friendly comments (such as thanks or praise); every other comment waits for the owner.</li>
+  <li>To summarize what viewers ask for and feel, so the owner can plan future videos.</li>
+  <li>To translate comments, draft replies and write those summaries, the text of a comment, the replies under it, and the video's title and description are sent to Anthropic's Claude API. No other translation or AI service is used. Anthropic's handling of that data is described in the <a href="https://www.anthropic.com/legal/privacy">Anthropic Privacy Policy</a>.</li>
   <li>Data is never sold, shared for advertising, or used for any other purpose. No one other than the owner and the service providers named above receives the data.</li>
 </ul>
 
@@ -41,18 +40,16 @@ and is not transferred to anyone except as needed to provide those features (the
 
 <h2>Where it is stored and for how long</h2>
 <ul>
-  <li>Comments, drafts and sign-in tokens are stored only on the owner's own computers. There is no Channel Helper server or database.</li>
+  <li>Comments, drafts and sign-in tokens are stored only in the app's data folder on the owner's own computers. That folder is inside the owner's personal Microsoft OneDrive, which keeps the owner's two computers in sync. The viewer summaries (without commenters' names) are saved as notes in the owner's own project folders on the same computers. There is no Channel Helper server or database.</li>
   <li>Saved comments are kept for at most the last 600 comments and can be deleted by the owner at any time.</li>
-  <li>Stored comments are refreshed from YouTube each time the app checks for new comments.
-    <span class="todo">[TO CONFIRM: how often the app refreshes, e.g. "every time it is opened" or "every 30 days at most".]</span></li>
+  <li>Stored comments are refreshed from YouTube about every 3 hours while the app is running, and whenever the owner presses "check now".</li>
   <li>Sign-in tokens are kept until the owner disconnects the channel or revokes access (see below).</li>
 </ul>
 
 <h2>Removing access and deleting data</h2>
 <p>The connection can be removed at any time in the app, or at <a href="https://myaccount.google.com/permissions">Google Account → Third-party connections</a>.
 After access is removed, the stored sign-in token stops working; "Disconnect" in the app also deletes it from the owner's computer.
-Saved comments and drafts can be deleted from within the app, or by deleting the app's data folder.
-<span class="todo">[TO CONFIRM: describe where the app's data folder is, or the exact in-app action that deletes saved comments.]</span></p>
+Saved comments and drafts are kept in one file, <code>data/comments.json</code>, inside the app's folder; deleting that file (or the whole <code>data</code> folder) deletes them.</p>
 
 <h2>Changes to this policy</h2>
 <p>If this policy changes, the updated version is published on this page with a new "Last updated" date.</p>
