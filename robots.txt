@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://plainliving12345-ctrl.github.io/sitemap.xml
